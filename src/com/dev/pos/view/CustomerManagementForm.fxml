@@ -22,7 +22,7 @@
       <TextField fx:id="txtName" layoutX="211.0" layoutY="104.0" promptText="Name" />
       <TextField fx:id="txtContact" layoutX="368.0" layoutY="104.0" promptText="Contact" />
       <TextField fx:id="txtSalary" layoutX="525.0" layoutY="104.0" promptText="Salary" />
-      <Button layoutX="323.0" layoutY="153.0" mnemonicParsing="false" onAction="#btnSaveOnAction" style="-fx-background-color: #ff0000;" text="Save Customer" textFill="WHITE" />
+      <Button fx:id="btnSaveOnAction" layoutX="323.0" layoutY="153.0" mnemonicParsing="false" onAction="#btnSaveOnAction" style="-fx-background-color: #ff0000;" text="Save Customer" textFill="WHITE" />
       <TextField fx:id="txtSearchHere" layoutX="100.0" layoutY="200.0" prefHeight="25.0" prefWidth="535.0" promptText="Search Here" />
       <TableView layoutX="102.0" layoutY="245.0" prefHeight="149.0" prefWidth="535.0">
         <columns>
@@ -30,7 +30,7 @@
           <TableColumn fx:id="colEmail" prefWidth="115.33335876464844" text="Email" />
             <TableColumn fx:id="colName" prefWidth="108.0" text="Name" />
             <TableColumn fx:id="colContact" prefWidth="105.33331298828125" text="Contact" />
-            <TableColumn prefWidth="128.66659545898438" text="Email" />
+            <TableColumn fx:id="colSalary" prefWidth="128.66659545898438" text="Salary" />
         </columns>
       </TableView>
    </children>

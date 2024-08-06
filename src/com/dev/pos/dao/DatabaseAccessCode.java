@@ -1,6 +1,7 @@
 package com.dev.pos.dao;
 
 import com.dev.pos.db.DBConnection;
+import com.dev.pos.dto.CustomerDTO;
 import com.dev.pos.dto.UserDTO;
 import com.dev.pos.util.security.PasswordManager;
 import javafx.scene.control.Alert;
@@ -10,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public class DatabaseAccessCode {
 
@@ -45,6 +47,28 @@ public class DatabaseAccessCode {
     //........User.......End...
 
     //.....Customer...Start...
+    public static boolean createCustomer(CustomerDTO dto){
+        return false;
+    }
+
+    public static boolean updateCustomer(CustomerDTO dto){
+        return false;
+    }
+    public static boolean deleteCustomer(String email){
+        return false;
+    }
+
+    public static CustomerDTO findCustomer(String email){
+        return null;
+    }
+
+    public static List<CustomerDTO> findAllCustomer(){
+        return null;
+    }
+
+    public static List<CustomerDTO> searchCustomer(String searchText){
+        return null;
+    }
     //.....Customer...End...
 
 }
