@@ -9,38 +9,38 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane fx:id="context" prefHeight="400.0" prefWidth="392.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.pos.controller.SignupController">
+<AnchorPane fx:id="context" prefHeight="375.0" prefWidth="331.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.pos.controller.SignupFormController">
    <children>
-      <Label layoutX="52.0" layoutY="42.0" text="Create An Account" textFill="#3498db">
+      <Label layoutX="56.0" layoutY="38.0" prefHeight="35.0" prefWidth="221.0" text="Create an Account" textAlignment="CENTER" textFill="#3498db">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Separator layoutX="49.0" layoutY="76.0" prefWidth="200.0" />
-      <TextField fx:id="txtEmail" layoutX="49.0" layoutY="100.0" prefHeight="29.0" prefWidth="272.0" promptText="Email">
+      <Separator layoutX="44.0" layoutY="81.0" prefHeight="11.0" prefWidth="244.0" />
+      <TextField fx:id="txtEmail" layoutX="44.0" layoutY="100.0" prefHeight="34.0" prefWidth="244.0" promptText="Email">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <PasswordField fx:id="txtPassword" layoutX="49.0" layoutY="155.0" prefHeight="29.0" prefWidth="272.0" promptText="Password">
+      <PasswordField fx:id="txtPassword" layoutX="44.0" layoutY="151.0" prefHeight="34.0" prefWidth="244.0" promptText="Password">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font size="14.0" />
          </font>
       </PasswordField>
-      <Button layoutX="49.0" layoutY="219.0" mnemonicParsing="false" onAction="#btnRegisterOnAction" prefHeight="29.0" prefWidth="272.0" style="-fx-background-color: #3498db;" text="Register Now">
+      <Button layoutX="44.0" layoutY="225.0" mnemonicParsing="false" onAction="#btnSignupOnAction" prefHeight="34.0" prefWidth="244.0" style="-fx-background-color: #2980b9;" text="Signup" textFill="WHITE">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Label layoutX="175.0" layoutY="264.0" text="OR" textFill="#3498db">
+      <Button layoutX="44.0" layoutY="302.0" mnemonicParsing="false" onAction="#btnAlreadyHaveAnAccountOnAction" prefHeight="34.0" prefWidth="244.0" style="-fx-background-color: #34495e;" text="Already Have an Account" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="151.0" layoutY="268.0" prefHeight="27.0" prefWidth="31.0" text="OR" textFill="#3498db">
+         <font>
+            <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="51.0" layoutY="298.0" mnemonicParsing="false" onAction="#btnAlreadyHaveAnAccountOnAction" prefHeight="29.0" prefWidth="272.0" style="-fx-background-color: #e67e22;" text="Already Have An Account">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
    </children>
 </AnchorPane>
