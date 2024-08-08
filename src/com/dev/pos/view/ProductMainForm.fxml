@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane fx:id="context" prefHeight="578.0" prefWidth="988.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dev.pos.controller.ProductMainFormController">
+   <children>
+      <Label layoutX="32.0" layoutY="30.0" text="Product Manager" />
+      <Button layoutX="872.0" layoutY="17.0" mnemonicParsing="false" onAction="#btnBackToHomeOnAction" text="Back to Home" />
+      <Separator layoutX="24.0" layoutY="56.0" prefHeight="0.0" prefWidth="944.0" />
+      <AnchorPane layoutX="24.0" layoutY="66.0" prefHeight="493.0" prefWidth="349.0" style="-fx-background-color: #fff000;">
+         <children>
+            <Button layoutX="201.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnNewProductOnAction" text="+ New Product" />
+            <TextField fx:id="txtProductCode" layoutX="15.0" layoutY="57.0" promptText="Product Code" />
+            <TextArea fx:id="txtDescription" layoutX="14.0" layoutY="92.0" prefHeight="85.0" prefWidth="323.0" promptText="Description " />
+            <Button fx:id="btnSave" layoutX="134.0" layoutY="192.0" mnemonicParsing="false" onAction="#btnSaveOnAction" text="Save Product" />
+            <TextField fx:id="txtSearch" alignment="CENTER" layoutX="15.0" layoutY="227.0" prefHeight="25.0" prefWidth="323.0" promptText="Search Product By ID" />
+            <TableView fx:id="tblProduct" layoutX="15.0" layoutY="269.0" prefHeight="209.0" prefWidth="323.0">
+              <columns>
+                <TableColumn fx:id="colProductID" prefWidth="75.0" text="Code" />
+                <TableColumn fx:id="colDescription" prefWidth="92.66665649414062" text="Description" />
+                  <TableColumn fx:id="colShowMore" prefWidth="82.0" text="Show more" />
+                  <TableColumn fx:id="colDelete" prefWidth="70.0" text="Delete" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+      <Separator layoutX="399.0" layoutY="66.0" orientation="VERTICAL" prefHeight="493.0" prefWidth="0.0" />
+      <TextField fx:id="txtSelectedProductCode" editable="false" layoutX="416.0" layoutY="83.0" promptText="Selected Produt Code" />
+      <TextArea fx:id="txtSelectedDescription" editable="false" layoutX="416.0" layoutY="122.0" prefHeight="85.0" prefWidth="323.0" promptText="Description " wrapText="true" />
+      <Button layoutX="642.0" layoutY="83.0" mnemonicParsing="false" onAction="#btnNewBatchOnAction" text="+ New Batch" />
+      <TableView fx:id="tblProductMain" layoutX="416.0" layoutY="223.0" prefHeight="209.0" prefWidth="547.0">
+         <columns>
+            <TableColumn fx:id="colMainCode" prefWidth="49.999969482421875" text="#" />
+            <TableColumn fx:id="colQTY" prefWidth="82.66665649414062" text="QTY" />
+            <TableColumn fx:id="colBuyingPrice" prefWidth="91.33331298828125" text="Buying Price" />
+            <TableColumn fx:id="colDAvailability" prefWidth="96.0" text="D. Availability" />
+            <TableColumn fx:id="colMainShowPrice" prefWidth="75.0" text="Show Price" />
+            <TableColumn fx:id="colSellingPrice" prefWidth="75.0" text="Selling Price" />
+            <TableColumn fx:id="colMainDelete" prefWidth="75.0" text="Delete" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>
