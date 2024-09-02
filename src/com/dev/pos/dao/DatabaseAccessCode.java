@@ -70,88 +70,31 @@ public class DatabaseAccessCode {
     //Product...Start...
 
     public static int getLastProductID() throws SQLException, ClassNotFoundException {
-        Connection connection = DBConnection.getInstance().getConnection();
-        String sql = "SELECT code FROM product ORDER BY code DESC LIMIT 1";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        ResultSet resultSet = statement.executeQuery();
-        if(resultSet.next()){
-            return resultSet.getInt(1)+1;
-        }
-        return 1;
+
     }
 
     public static boolean saveProduct(ProductDTO dto) throws SQLException, ClassNotFoundException {
-        Connection connection = DBConnection.getInstance().getConnection();
-        String sql = "INSERT INTO product VALUES(?,?)";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1,dto.getCode());
-        statement.setString(2,dto.getDescription());
-        return statement.executeUpdate()>0;
+
     }
 
     public static boolean updateProduct(ProductDTO dto) throws SQLException, ClassNotFoundException {
-        Connection connection = DBConnection.getInstance().getConnection();
-        String sql = "UPDATE product SET description=? WHERE code=?";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, dto.getDescription());
-        statement.setInt(2,dto.getCode());
-        return statement.executeUpdate()>0;
+
     }
 
     public static boolean deleteProduct(int code) throws SQLException, ClassNotFoundException {
-        Connection connection = DBConnection.getInstance().getConnection();
-        String sql = "DELETE FROM product WHERE code=?";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1,code);
-        return statement.executeUpdate()>0;
+
     }
 
     public ProductDTO findProduct(int code) throws SQLException, ClassNotFoundException {
-        Connection connection = DBConnection.getInstance().getConnection();
-        String sql = "SELECT * FROM product WHERE code=?";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1,code);
-        ResultSet resultSet = statement.executeQuery();
-        if (resultSet.next()){
-            return new ProductDTO(
-                    resultSet.getInt(1),
-                    resultSet.getString(2)
-            );
-        }
-        return null;
+
     }
 
     public List<ProductDTO> findAllProduct() throws SQLException, ClassNotFoundException {
-        Connection connection = DBConnection.getInstance().getConnection();
-        String sql = "SELECT * FROM product";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        ResultSet resultSet = statement.executeQuery();
-        List<ProductDTO> productDTOList = new ArrayList<>();
 
-        while(resultSet.next()){
-            productDTOList.add(new ProductDTO(
-                    resultSet.getInt(1),
-                    resultSet.getString(2)
-            ));
-        }
-        return productDTOList;
     }
 
     public List<ProductDTO> searchProduct() throws SQLException, ClassNotFoundException {
-        Connection connection = DBConnection.getInstance().getConnection();
-        String sql = "SELECT * FROM product WHERE code LIKE?";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, searchText);
-        ResultSet resultSet = statement.executeQuery();
-        List<ProductDTO> productDTOList = new ArrayList<>();
 
-        while(resultSet.next()){
-            productDTOList.add(new ProductDTO(
-                    resultSet.getInt(1),
-                    resultSet.getString(2)
-            ));
-        }
-        return productDTOList;
     }
     //Product...End...
 
