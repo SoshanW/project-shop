@@ -1,6 +1,12 @@
 
 package com.dev.pos.dao;
 
+import com.dev.pos.dao.custom.CustomerDao;
+import com.dev.pos.dao.custom.ProductDao;
+import com.dev.pos.dao.custom.UserDao;
+import com.dev.pos.dao.impl.CustomerDaoImpl;
+import com.dev.pos.dao.impl.ProductDaoImpl;
+import com.dev.pos.dao.impl.UserDaoImpl;
 import com.dev.pos.db.DBConnection;
 import com.dev.pos.dto.CustomerDTO;
 import com.dev.pos.dto.ProductDTO;
@@ -19,6 +25,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseAccessCode {
+
+    CustomerDao customerDao = new CustomerDaoImpl();
+    UserDao userDao = new UserDaoImpl();
+    ProductDao productDao = new ProductDaoImpl();
 
     //.................User....Start...
 
