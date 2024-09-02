@@ -14,7 +14,7 @@ import java.util.List;
 
 public class ProductDaoImpl implements ProductDao {
     @Override
-    public boolean saveProduct(Product product) throws SQLException, ClassNotFoundException {
+    public boolean save(Product product) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
         String sql = "INSERT INTO product VALUES(?,?)";
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -24,7 +24,7 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public boolean updateProduct(Product product) throws SQLException, ClassNotFoundException {
+    public boolean update(Product product) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
         String sql = "UPDATE product SET description=? WHERE code=?";
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -33,15 +33,16 @@ public class ProductDaoImpl implements ProductDao {
         return statement.executeUpdate()>0;    }
 
     @Override
-    public boolean deleteProduct(int code) throws SQLException, ClassNotFoundException {
+    public boolean delete(Integer code) throws SQLException, ClassNotFoundException     {
         Connection connection = DBConnection.getInstance().getConnection();
         String sql = "DELETE FROM product WHERE code=?";
         PreparedStatement statement = connection.prepareStatement(sql);
         statement.setInt(1,code);
-        return statement.executeUpdate()>0;    }
+        return statement.executeUpdate()>0;
+    }
 
     @Override
-    public Product findProduct(int code) throws SQLException, ClassNotFoundException {
+    public Product find(Integer code) throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
         String sql = "SELECT * FROM product WHERE code=?";
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -57,7 +58,7 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public List<Product> findAllProducts() throws SQLException, ClassNotFoundException {
+    public List<Product> findAll() throws SQLException, ClassNotFoundException {
         Connection connection = DBConnection.getInstance().getConnection();
         String sql = "SELECT * FROM product";
         PreparedStatement statement = connection.prepareStatement(sql);
@@ -74,7 +75,24 @@ public class ProductDaoImpl implements ProductDao {
     }
 
     @Override
-    public List<Product> searchProduct(String value) throws SQLException, ClassNotFoundException {
+    public List<Product> search(Integer integer) throws SQLException, ClassNotFoundException {
+        return List.of();
+    }
+
+    @Override
+    public int getLastProductId() throws SQLException, ClassNotFoundException {
+        Connection connection = DBConnection.getInstance().getConnection();
+        String sql = "SELECT code FROM product ORDER BY code DESC LIMIT 1";
+        PreparedStatement statement = connection.prepareStatement(sql);
+        ResultSet resultSet = statement.executeQuery();
+        if(resultSet.next()){
+            return resultSet.getInt(1)+1;
+        }
+        return 1;
+    }
+
+    @Override
+    public List<Product> searchByDescription(String value) throws SQLException, ClassNotFoundException {
         value="%"+value+"%";
         Connection connection = DBConnection.getInstance().getConnection();
         String sql = "SELECT * FROM product WHERE code LIKE?";
@@ -90,17 +108,5 @@ public class ProductDaoImpl implements ProductDao {
             ));
         }
         return productList;
-    }
-
-    @Override
-    public int getLastProductId() throws SQLException, ClassNotFoundException {
-        Connection connection = DBConnection.getInstance().getConnection();
-        String sql = "SELECT code FROM product ORDER BY code DESC LIMIT 1";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        ResultSet resultSet = statement.executeQuery();
-        if(resultSet.next()){
-            return resultSet.getInt(1)+1;
-        }
-        return 1;
     }
 }

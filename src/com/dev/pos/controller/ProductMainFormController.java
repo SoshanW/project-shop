@@ -1,5 +1,6 @@
 package com.dev.pos.controller;
 
+import com.dev.pos.dao.DatabaseAccessCode;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class ProductMainFormController {
     public AnchorPane context;
@@ -30,6 +32,16 @@ public class ProductMainFormController {
     public TableColumn colMainShowPrice;
     public TableColumn colSellingPrice;
     public TableColumn colMainDelete;
+
+    public void initialize(){loadProductId();}
+
+    private void loadProductId(){
+        try{
+            txtProductCode.setText(String.valueOf(new DatabaseAccessCode().getLastProductID()));
+        }catch(SQLException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+    }
 
     public void btnBackToHomeOnAction(ActionEvent actionEvent) {
     }
