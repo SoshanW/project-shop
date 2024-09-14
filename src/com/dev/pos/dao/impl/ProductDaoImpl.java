@@ -1,6 +1,7 @@
 package com.dev.pos.dao.impl;
 
 import com.dev.pos.Enitity.Product;
+import com.dev.pos.dao.CrudUtil;
 import com.dev.pos.dao.custom.ProductDao;
 import com.dev.pos.db.DBConnection;
 import com.dev.pos.dto.ProductDTO;
@@ -15,22 +16,25 @@ import java.util.List;
 public class ProductDaoImpl implements ProductDao {
     @Override
     public boolean save(Product product) throws SQLException, ClassNotFoundException {
-        Connection connection = DBConnection.getInstance().getConnection();
+
         String sql = "INSERT INTO product VALUES(?,?)";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setInt(1,product.getCode());
-        statement.setString(2,product.getDescription());
-        return statement.executeUpdate()>0;
+        return CrudUtil.execute(
+                sql,
+                product.getCode(),
+                product.getDescription()
+        );
     }
 
     @Override
     public boolean update(Product product) throws SQLException, ClassNotFoundException {
-        Connection connection = DBConnection.getInstance().getConnection();
+
         String sql = "UPDATE product SET description=? WHERE code=?";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        statement.setString(1, product.getDescription());
-        statement.setInt(2,product.getCode());
-        return statement.executeUpdate()>0;    }
+        return  CrudUtil.execute(
+                sql,
+                product.getCode(),
+                product.getDescription()
+        );
+    }
 
     @Override
     public boolean delete(Integer code) throws SQLException, ClassNotFoundException     {
